@@ -1,0 +1,54 @@
+h1 {
+    display: inline-block;
+    border-radius: 1px;
+    border-style: double;
+    background-color: #efefef;
+    color: #000;
+}
+
+#playerTwo-nametag {
+    float: right;
+}
+
+/* .container {
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+}
+
+
+/* make circles */
+/* .col {
+    background: yellowgreen;
+    border: 0.1875em solid #0F1C3F;
+    border-radius: 50%;
+    box-shadow: 0.375em 0.375em 0 0 rgba(15, 28, 63, 0.125);
+    height: 48px;
+    width: 48px;
+    margin: 1em;
+    object-fit: contain;
+}    */
+
+.container {
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.counter {
+    background: yellowgreen;
+    border: 0.1875em solid #0F1C3F;
+    border-radius: 50%;
+    box-shadow: 0.375em 0.375em 0 0 rgba(15, 28, 63, 0.125);
+    height: 36px;
+    width: 36px;
+    margin: 1em;
+    object-fit: contain;
+}
+  
+
+
