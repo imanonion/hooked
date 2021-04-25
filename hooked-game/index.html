@@ -22,31 +22,12 @@
     <body>
 
         <!-- Creating nametags for Player 1 and Player 2 -->
-        <div id="wrapper">
+        <div id="header">
             <h1 id="playerOne-nametag">Player 1</h1>
             <h1 id="playerTwo-nametag">Player 2</h1>    
         </div>
 
-        <!-- <div class="container">
-            <div class="row">
-              <div class="col" id="counterOne">
-              </div>
-              <div class="col" id="counterTwo">
-              </div>
-              <div class="col" id="counterThree">
-              </div>
-              <div class="col" id="counterFour">
-              </div>
-              <div class="col" id="counterFive">
-              </div>
-              <div class="col" id="counterSix">
-              </div>
-              <div class="col" id="counterSeven">
-              </div>
-            </div>
-        </div> -->
-
-        <div class="container">
+        <div class="container counters">
           <div class="counter" id="item-0"></div>
           <div class="counter" id="item-1"></div>
           <div class="counter" id="item-2"></div>
@@ -55,6 +36,21 @@
           <div class="counter" id="item-5"></div>
           <div class="counter" id="item-6"></div>
         </div>
+
+        <div class="grid-wrapper">
+          <div class="grid">
+            <div class="box1">One</div>
+            <div class="box2">Two</div>
+            <div class="box3">Three</div>
+            <div class="box4">
+              <div class="line" id="line2"></div>
+            </div>
+            <div class="box5">
+              <div class="line" id="line1"></div>
+            </div>
+          </div>
+        </div>
+        
 
         <script src="main.js"></script>
         <script 
@@ -66,3 +62,25 @@
     </body>
 
 </html>
+
+<!-- unused code -->
+
+<!-- originally created counters using bootstrap, but changed to using flexbox -->
+    <!-- <div class="container">
+        <div class="row">
+          <div class="col" id="counterOne">
+          </div>
+          <div class="col" id="counterTwo">
+          </div>
+          <div class="col" id="counterThree">
+          </div>
+          <div class="col" id="counterFour">
+          </div>
+          <div class="col" id="counterFive">
+          </div>
+          <div class="col" id="counterSix">
+          </div>
+          <div class="col" id="counterSeven">
+          </div>
+        </div>
+    </div> -->
