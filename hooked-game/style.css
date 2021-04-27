@@ -62,16 +62,17 @@ h1 {
     background-color: chocolate;
 }
 
+.line{
+    height: 300px;
+    width: 5px;
+    background: brown;
+  }
+
 @keyframes swinging{
     0%{transform: rotate(-90deg);}
     50%{transform: rotate(90deg);}
     100%{transform: rotate(-90deg);}
-}
-
-.line{
-  height: 300px;
-  width: 5px;
-  background: brown;
+    
 }
 
 .box4 {
@@ -80,7 +81,7 @@ h1 {
     grid-row-start: 2;
     grid-row-end: 3;
     transform-origin: 0 0;
-    animation: swinging 2.5s ease-in-out forwards infinite;
+    /* animation: swinging 2.5s ease-in-out forwards infinite; */
 }
 
 .box5 {
@@ -89,17 +90,12 @@ h1 {
     grid-row-start: 2;
     grid-row-end: 3;
     transform-origin: 0 0;
-    animation: swinging 2.5s ease-in-out forwards infinite;
+    /* animation: swinging 2.5s ease-in-out forwards infinite; */
 }
 
 
 
-/* .box {
-    -webkit-transform-origin: 0 0%;
-    -webkit-animation: swinging 2s ease-in-out forwards;
-    transform-origin: 0 0;
-    animation: swinging 2.5s ease-in-out forwards infinite;
-} */
+
 
 /* Unused codes */
 /* .container {
@@ -127,4 +123,11 @@ h1 {
     margin: 1em;
     object-fit: contain;
 }    */
+
+/* .box {
+    -webkit-transform-origin: 0 0%;
+    -webkit-animation: swinging 2s ease-in-out forwards;
+    transform-origin: 0 0;
+    animation: swinging 2.5s ease-in-out forwards infinite;
+} */
 
