@@ -37,6 +37,7 @@ window.onload = () => {
     function activateP1Swing() {
         if (playerOnePressed) {
             console.log('P1 swing activated');
+
             lineOne.setAttribute('id', 'p1Swing');
         }
     }
@@ -52,6 +53,10 @@ window.onload = () => {
         if(event.keyCode == 65) {
             playerOnePressed = false;
             p1SwingBack()
+
+            //revert to neutral position after swing back
+            // lineOne.removeAttribute('id', 'p1SwingBack');
+
         } else if (event.keyCode == 39) {
             playerTwoPressed = false;
             p2SwingBack()
@@ -62,17 +67,16 @@ window.onload = () => {
     function p1SwingBack () {
         if(playerOnePressed === false) {
             console.log('player 1 stop');
-            // lineOne.removeAttribute('id', 'p1Swing');
-            // lineOne.setAttribute('id', 'p2SwingBack');
-            let deg0 = getP1SwingDegrees();
-            let deg50 = -deg0;
-            //console.log(deg0)
-            //console.log(deg50)
+            //lineOne.removeAttribute('id', 'p1Swing');
 
             //update css keyframes-swinging3
+            let deg0 = getP1SwingDegrees();
+            let deg50 = -deg0;
 
-
-
+            lineOne.setAttribute('id', 'p1SwingBack');
+            let p1SwingBack = document.querySelector('#p1SwingBack');
+            p1SwingBack.style.setProperty('--deg0', deg0 + 'deg');
+            p1SwingBack.style.setProperty('--deg50', deg50 + 'deg');
         }
     }
 
@@ -100,7 +104,15 @@ window.onload = () => {
         if(playerTwoPressed === false) {
             console.log('player 2 stop');
             //lineTwo.removeAttribute('id', 'p2Swing');
-            getP2SwingDegrees();
+
+            //update css keyframes-swinging3
+            let deg0 = getP2SwingDegrees();
+            let deg50 = -deg0;
+
+            lineTwo.setAttribute('id', 'p2SwingBack');
+            let p2SwingBack = document.querySelector('#p2SwingBack');
+            p2SwingBack.style.setProperty('--deg0', deg0 + 'deg');
+            p2SwingBack.style.setProperty('--deg50', deg50 + 'deg');
         }
     }
 
@@ -119,8 +131,8 @@ window.onload = () => {
         let b = parseFloat(splits[1]);
         //doing atan2 on b, a will give the angle in radians, then convert to degrees
         let rad = Math.atan2(b, a);
-        let deg = -((180 * rad) / Math.PI);
-        return deg;
+        let deg0 = (180 * rad) / Math.PI;
+        return deg0;
     }
 
     //make line dynamic

@@ -105,25 +105,25 @@ h1 {
 }
 
 @keyframes swinging4 {
-    0%, 100% {transform: rotate(0deg);}
-    50% {transform: rotate(-90deg);}
-    /* 50% {transform: rotate(90deg);} */
+    0% {transform: rotate(var(--deg0));}
+    50% {transform: rotate(var(--deg50));}
+    100% {transform: rotate(0deg);}
 }
 
 #p1Swing {
-    animation: swinging1 5s ease-in-out forwards infinite;
+    animation: swinging1 3s ease-in-out forwards infinite;
 }
 
 #p2Swing {
-    animation: swinging2 5s ease-in-out forwards infinite;
+    animation: swinging2 3s ease-in-out forwards infinite;
 }
 
 #p1SwingBack {
-    animation: swinging3 5s ease-in-out forwards infinite;
+    animation: swinging3 3s ease-in-out forwards;
 }
 
 #p2SwingBack {
-    animation: swinging4 5s ease-in-out forwards infinite;
+    animation: swinging4 3s ease-in-out forwards;
 }
 
 
