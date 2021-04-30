@@ -3,18 +3,23 @@
 
 window.onload = () => {
     
-    //initialize line resize when browser is first opened
-    //adjust height of line according to size of grid in browser
+    //get essential parameters for calculation of line height and winning swing angle range
+    let line = document.querySelectorAll('.line');
+
+    let box6 = document.querySelector('.box6');
+    let styleBox6 = getComputedStyle(box6);
+    let heightOfBox6 = parseFloat(styleBox6['height']);
+    let widthOfBox6 = parseFloat(styleBox6['inlineSize']);
+    // console.log(heightOfBox6)
+    // console.log(widthOfBox6)
+    let winningAngle = Math.atan(widthOfBox6 / heightOfBox6) * (180/Math.PI);
+    console.log(winningAngle)
+
     resizeLine();
 
+    //initialize line resize when browser is first opened
+    //adjust height of line according to size of grid in browser
     function resizeLine () {
-        let line = document.querySelectorAll('.line');
-
-        let box6 = document.querySelector('.box6');
-        let styleBox6 = getComputedStyle(box6);
-        let heightOfBox6 = parseFloat(styleBox6['height']);
-        let widthOfBox6 = parseFloat(styleBox6['inlineSize']);
-        
         for (let noOfLines = 0; noOfLines < line.length; noOfLines++) {
             let heightofline = `${Math.sqrt(Math.pow(heightOfBox6, 2) + Math.pow(widthOfBox6, 2))}px`;
             line[noOfLines].style.height = heightofline
@@ -57,7 +62,6 @@ window.onload = () => {
     function activateP1Swing() {
         if (playerOnePressed) {
             console.log('P1 swing activated');
-
             lineOne.setAttribute('id', 'p1Swing');
         }
     }
@@ -72,14 +76,20 @@ window.onload = () => {
     function keyUpHandler (event) {
         if(event.keyCode == 65) {
             playerOnePressed = false;
-            p1SwingBack()
+            p1SwingBack();
+            checkP1collide();
 
-            //revert to neutral position after swing back
-            // lineOne.removeAttribute('id', 'p1SwingBack');
+        //if swing degree is within +- 1 of winning degree, then register as collision for Player 1
+        // let angleUpperLimit = winningAngle + 1;
+        // let angleLowerLimit = winningAngle - 1;
+        // console.log(angleUpperLimit);
+        // console.log(angleLowerLimit);
 
+        
+            
         } else if (event.keyCode == 39) {
             playerTwoPressed = false;
-            p2SwingBack()
+            p2SwingBack();
         }
     }
 
@@ -87,7 +97,6 @@ window.onload = () => {
     function p1SwingBack () {
         if(playerOnePressed === false) {
             console.log('player 1 stop');
-            //lineOne.removeAttribute('id', 'p1Swing');
 
             //update css keyframes-swinging3
             let deg0 = getP1SwingDegrees();
@@ -97,6 +106,18 @@ window.onload = () => {
             let p1SwingBack = document.querySelector('#p1SwingBack');
             p1SwingBack.style.setProperty('--deg0', deg0 + 'deg');
             p1SwingBack.style.setProperty('--deg50', deg50 + 'deg');
+            
+
+            //check if collision is successful or not
+            //if swing degree is within +- 1 of winning degree, then register as collision for Player 1
+            let angleUpperLimit = winningAngle + 1.5;
+            let angleLowerLimit = winningAngle - 1.5;
+
+            if (deg0 < angleUpperLimit && deg0 > angleLowerLimit) {
+                console.log('hit');
+            } else {
+                console.log('missed');
+            }
         }
     }
 
@@ -123,9 +144,8 @@ window.onload = () => {
     function p2SwingBack () {
         if(playerTwoPressed === false) {
             console.log('player 2 stop');
-            //lineTwo.removeAttribute('id', 'p2Swing');
 
-            //update css keyframes-swinging3
+            //update css keyframes-swinging4
             let deg0 = getP2SwingDegrees();
             let deg50 = -deg0;
 
@@ -133,6 +153,16 @@ window.onload = () => {
             let p2SwingBack = document.querySelector('#p2SwingBack');
             p2SwingBack.style.setProperty('--deg0', deg0 + 'deg');
             p2SwingBack.style.setProperty('--deg50', deg50 + 'deg');
+
+            //check if collision is successful or not
+            let angleUpperLimit = -winningAngle + 1.5;
+            let angleLowerLimit = -winningAngle - 1.5;
+
+            if (deg0 < angleUpperLimit && deg0 > angleLowerLimit) {
+                console.log('hit');
+            } else {
+                console.log('missed');
+            }
         }
     }
 
@@ -155,10 +185,15 @@ window.onload = () => {
         return deg0;
     }
 
-    //if line 1 touches row line 7 col line 8, then move counter right
-    //else revert to neutral position
-    //if line 2 touches row line 7 col line 8, then move counter left
-    //else revert to neutral position
+    //if P1 collision successful, then move counter right
+    function moveP1right () {
+
+    }
+
+    //if P2 collision successful, then move counter left
+    function moveP2left () {
+
+    }
 
     //set winning criteria
 
