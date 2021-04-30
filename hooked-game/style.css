@@ -62,8 +62,15 @@ h1 {
     background-color: chocolate;
 }
 
+.box6 {
+    grid-column-start: 4;
+    grid-column-end: 8;
+    grid-row-start: 2;
+    grid-row-end: 6;
+}
+
 .line {
-    height: 300px;
+    /* height: var(--height); */
     width: 5px;
     background: brown;
 }
@@ -89,13 +96,11 @@ h1 {
 @keyframes swinging1 {
     0%, 100% {transform: rotate(0deg);}
     50% {transform: rotate(90deg);}
-    /* 50% {transform: rotate(-90deg);} */
 }
 
 @keyframes swinging2 {
     0%, 100% {transform: rotate(0deg);}
     50% {transform: rotate(-90deg);}
-    /* 50% {transform: rotate(90deg);} */
 }
 
 @keyframes swinging3 {

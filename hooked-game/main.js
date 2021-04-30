@@ -2,6 +2,26 @@
 // console.log('connected!');
 
 window.onload = () => {
+    
+    //initialize line resize when browser is first opened
+    //adjust height of line according to size of grid in browser
+    resizeLine();
+
+    function resizeLine () {
+        let line = document.querySelectorAll('.line');
+
+        let box6 = document.querySelector('.box6');
+        let styleBox6 = getComputedStyle(box6);
+        let heightOfBox6 = parseFloat(styleBox6['height']);
+        let widthOfBox6 = parseFloat(styleBox6['inlineSize']);
+        
+        for (let noOfLines = 0; noOfLines < line.length; noOfLines++) {
+            let heightofline = `${Math.sqrt(Math.pow(heightOfBox6, 2) + Math.pow(widthOfBox6, 2))}px`;
+            line[noOfLines].style.height = heightofline
+        }
+    }
+    //re-initialize resize when browser is resized
+    window.onresize = resizeLine;
 
     // add event listeners to counters 
     let counters = document.querySelectorAll('.counter');
@@ -134,8 +154,6 @@ window.onload = () => {
         let deg0 = (180 * rad) / Math.PI;
         return deg0;
     }
-
-    //make line dynamic
 
     //if line 1 touches row line 7 col line 8, then move counter right
     //else revert to neutral position
