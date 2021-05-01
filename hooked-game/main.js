@@ -26,19 +26,7 @@ window.onload = () => {
         }
     }
     //re-initialize resize when browser is resized
-    window.onresize = resizeLine;
-
-    // add event listeners to counters 
-    let counters = document.querySelectorAll('.counter');
-
-    for (let i = 0; i < counters.length; i++) {
-        counters[i].addEventListener('click', attachCounterPoint)
-    }
-
-    function attachCounterPoint (event) {
-        let clickedCounter = event.target;
-        clickedCounter.innerText = 'x';
-    }    
+    window.onresize = resizeLine; 
 
     //add keypress to trigger swing pull
     document.addEventListener('keydown', keyDownHandler, false);
@@ -77,15 +65,6 @@ window.onload = () => {
         if(event.keyCode == 65) {
             playerOnePressed = false;
             p1SwingBack();
-            checkP1collide();
-
-        //if swing degree is within +- 1 of winning degree, then register as collision for Player 1
-        // let angleUpperLimit = winningAngle + 1;
-        // let angleLowerLimit = winningAngle - 1;
-        // console.log(angleUpperLimit);
-        // console.log(angleLowerLimit);
-
-        
             
         } else if (event.keyCode == 39) {
             playerTwoPressed = false;
@@ -115,6 +94,7 @@ window.onload = () => {
 
             if (deg0 < angleUpperLimit && deg0 > angleLowerLimit) {
                 console.log('hit');
+                moveP1right();
             } else {
                 console.log('missed');
             }
@@ -160,6 +140,7 @@ window.onload = () => {
 
             if (deg0 < angleUpperLimit && deg0 > angleLowerLimit) {
                 console.log('hit');
+                moveP2left();
             } else {
                 console.log('missed');
             }
@@ -185,17 +166,56 @@ window.onload = () => {
         return deg0;
     }
 
-    //if P1 collision successful, then move counter right
+    //create array of counters and assign variables
+    let counters = document.querySelectorAll('.counter');
+    // counters[0]: div#item-0.counter
+    // counters[1]: div#item-1.counter
+    // counters[2]: div#item-2.counter
+    // counters[3]: div#item-3.counter
+    // counters[4]: div#item-4.counter
+    // counters[5]: div#item-5.counter
+    // counters[6]: div#item-6.counter
+
+    //create sprite and attach to middle counter when game is initialized
+    let startingIndex = 3
+    let spriteStartingPosition = counters[startingIndex];
+    let sprite = document.createElement('div');
+    sprite.classList.add('sprite');
+
+    spriteStartingPosition.appendChild(sprite);
+
+    //create variable for current index position of sprite
+    let currentIndex = startingIndex;
+
+    //move sprite right if P1 collided successfully
     function moveP1right () {
-
+        currentIndex += 1;
+        counters[currentIndex].appendChild(sprite);
     }
 
-    //if P2 collision successful, then move counter left
+    //move sprite left if P2 collided successfully
     function moveP2left () {
-
+        currentIndex -= 1;
+        counters[currentIndex].appendChild(sprite);
     }
+
+    // // add event listeners to counters 
+    // let counters = document.querySelectorAll('.counter');
+
+    // for (let i = 0; i < counters.length; i++) {
+    //     counters[i].addEventListener('click', attachCounterPoint)
+    // }
+
+    // function attachCounterPoint (event) {
+    //     let clickedCounter = event.target;
+    //     clickedCounter.innerText = 'x';
+    // }   
+
+
 
     //set winning criteria
+    //if sprite is in counter-0, player 2 wins
+    //if sprite is in counter-6, player 1 wins
 
     //reset game
 
