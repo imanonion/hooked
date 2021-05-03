@@ -3,30 +3,33 @@
 
 window.onload = () => {
     
-    //get essential parameters for calculation of line height and winning swing angle range
-    let line = document.querySelectorAll('.line');
-
-    let box6 = document.querySelector('.box6');
-    let styleBox6 = getComputedStyle(box6);
-    let heightOfBox6 = parseFloat(styleBox6['height']);
-    let widthOfBox6 = parseFloat(styleBox6['inlineSize']);
-    // console.log(heightOfBox6)
-    // console.log(widthOfBox6)
-    let winningAngle = Math.atan(widthOfBox6 / heightOfBox6) * (180/Math.PI);
-    console.log(winningAngle)
-
     resizeLine();
-
+    
     //initialize line resize when browser is first opened
     //adjust height of line according to size of grid in browser
     function resizeLine () {
+        //get essential parameters for calculation of line height and winning swing angle range
+        let line = document.querySelectorAll('.line');
+
+        let box6 = document.querySelector('.box6');
+        let styleBox6 = getComputedStyle(box6);
+        let heightOfBox6 = parseFloat(styleBox6['height']);
+        let widthOfBox6 = parseFloat(styleBox6['inlineSize']);
+        // console.log(heightOfBox6)
+        // console.log(widthOfBox6)
+
         for (let noOfLines = 0; noOfLines < line.length; noOfLines++) {
-            let heightofline = `${Math.sqrt(Math.pow(heightOfBox6, 2) + Math.pow(widthOfBox6, 2))}px`;
-            line[noOfLines].style.height = heightofline
+            let heightOfLine = `${Math.sqrt(Math.pow(heightOfBox6, 2) + Math.pow(widthOfBox6, 2))}px`;
+            line[noOfLines].style.height = heightOfLine
         }
+
+        let winningAngle = Math.atan(widthOfBox6 / heightOfBox6) * (180/Math.PI);
+        return winningAngle
+        // console.log(winningAngle)
     }
+
     //re-initialize resize when browser is resized
-    window.onresize = resizeLine; 
+    window.addEventListener('resize', resizeLine);
 
     //add keypress to trigger swing pull
     document.addEventListener('keydown', keyDownHandler, false);
@@ -89,12 +92,13 @@ window.onload = () => {
 
             //check if collision is successful or not
             //if swing degree is within +- 1 of winning degree, then register as collision for Player 1
+            let winningAngle = resizeLine();
             let angleUpperLimit = winningAngle + 1.5;
             let angleLowerLimit = winningAngle - 1.5;
 
             if (deg0 < angleUpperLimit && deg0 > angleLowerLimit) {
                 console.log('hit');
-                moveP1right();
+                setTimeout(moveP1right, 1000);
             } else {
                 console.log('missed');
             }
@@ -141,12 +145,14 @@ window.onload = () => {
             p2SwingBack.style.setProperty('--deg50', deg50 + 'deg');
 
             //check if collision is successful or not
+            let winningAngle = resizeLine();
             let angleUpperLimit = -winningAngle + 1.5;
             let angleLowerLimit = -winningAngle - 1.5;
 
             if (deg0 < angleUpperLimit && deg0 > angleLowerLimit) {
                 console.log('hit');
-                moveP2left();
+                // moveP2left();
+                setTimeout(moveP2left, 1000);
             } else {
                 console.log('missed');
             }
@@ -188,7 +194,7 @@ window.onload = () => {
     // counters[6]: div#item-6.counter
 
     //create sprite and attach to middle counter when game is initialized
-    let startingIndex = 1
+    let startingIndex = 3
     let spriteStartingPosition = counters[startingIndex];
     let sprite = document.createElement('div');
     sprite.classList.add('sprite');
@@ -210,7 +216,16 @@ window.onload = () => {
         counters[currentIndex].appendChild(sprite);
     }
 
-    //reset game
+    //solid color circle at end of line
+    //white background circle with dotted border as target
+    //change counters and sprite
+    //add border for toy
+    //add background image
 
+    // pop up window > player x won! > generate random punishment > reset game? 
+
+    //add "intro" pop up window with instructions > start game
+
+    //add 3..2..1 countdown page
 
 }
