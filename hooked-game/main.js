@@ -216,7 +216,6 @@ window.onload = () => {
         counters[currentIndex].appendChild(sprite);
     }
 
-    //solid color circle at end of line
     //white background circle with dotted border as target
     //change counters and sprite
     //add border for toy
