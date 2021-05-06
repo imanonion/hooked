@@ -103,12 +103,6 @@ window.onload = () => {
                 console.log('missed');
             }
         }
-        
-        //if sprite is in counter-6, player 1 wins
-        if (currentIndex === 6) {
-            alert('Player 1 wins!')
-        }
-
     }
 
     //get swing degree of P1
@@ -157,11 +151,6 @@ window.onload = () => {
                 console.log('missed');
             }
         }
-
-        //if sprite is in counter-0, player 2 wins
-        if (currentIndex === 0) {
-            alert('Player 2 wins!')
-        }
     }
 
     //get swing degree of P2
@@ -208,22 +197,62 @@ window.onload = () => {
     function moveP1right () {
         currentIndex += 1;
         counters[currentIndex].appendChild(sprite);
+
+        //if sprite is in counter-6, player 1 wins
+        if (currentIndex === 6) {
+            let player = 1;
+            winnerAlert(player);
+        }
+        
     }
 
     //move sprite left if P2 collided successfully
     function moveP2left () {
         currentIndex -= 1;
         counters[currentIndex].appendChild(sprite);
+
+        //if sprite is in counter-0, player 2 wins
+        if (currentIndex === 0) {
+            let player = 2;
+            winnerAlert(player);
+        }
     }
 
-    //white background circle with dotted border as target
+    // modal appears when either player wins
+    function winnerAlert (player) {
+        let modal = document.getElementById('myModal');
+        let modalContent = document.querySelector(".modal-content");
+        let span = document.querySelector('.close');
+        let restart = document.querySelector('#reset');
+
+        let announceWinner = document.createElement('p');
+        announceWinner.innerHTML = `Player ${player} is the superior Hooker!`
+        modalContent.appendChild(announceWinner);
+
+        modal.style.display = "block";
+
+        span.addEventListener('click', () => {
+            modal.style.display = 'none';
+        })
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        restart.addEventListener('click', () => {
+            location.reload();
+        })
+    }
+
+
     //change counters and sprite
     //add border for toy
     //add background image
 
-    // pop up window > player x won! > generate random punishment > reset game? 
 
-    //add "intro" pop up window with instructions > start game
+    //add "intro" pop up window with instructions and welcome message > start game
 
     //add 3..2..1 countdown page
 
