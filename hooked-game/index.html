@@ -6,6 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@300&display=swap" rel="stylesheet">
 
         <title>Hooked! the game</title>
 
@@ -14,11 +16,21 @@
     <body>
 
         <!-- Creating nametags for Player 1 and Player 2 -->
-        <div id="header">
+        <div class="header">
+          <div id="header1">
             <h1 id="playerOne-nametag">Player 1</h1>
-            <h1 id="playerTwo-nametag">Player 2</h1>    
+            <span class="keyboard-svg"><img src="./img/keyboard-key-a.svg" height="50" height="50"></span>
+          </div> 
+          <div id="game-name">
+            <h2>HOOKED!</h2>
+          </div>
+          <div id="header2">
+            <h1 id="playerTwo-nametag">Player 2</h1>
+            <span class="keyboard-svg"><img src="./img/key-l-of-a-keyboard.svg" height="50" height="50"></span>
+          </div>
         </div>
 
+        <!-- create 7 counters -->
         <div class="container counters">
           <div class="counter" id="item-0"></div>
           <div class="counter" id="item-1"></div>
@@ -29,6 +41,7 @@
           <div class="counter" id="item-6"></div>
         </div>
 
+        <!-- create toy -->
         <div class="grid-wrapper">
           <div class="grid">
             <div class="box1"></div>
@@ -50,9 +63,13 @@
         <div id="myModal" class="modal">
           <div class="modal-content">
             <span class="close">&CircleTimes;</span>
+            <p class="winner"></p>
             <button id="reset">Restart - I'm Hooked!</button>
           </div>
         </div>
+
+        <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/gregor-cresnar" title="Gregor Cresnar">Gregor Cresnar</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
+
         
         <script src="main.js"></script>
 

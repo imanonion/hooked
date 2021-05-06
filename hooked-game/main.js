@@ -3,9 +3,9 @@
 
 window.onload = () => {
     
+    //initialize line resize when browser is first opened
     resizeLine();
     
-    //initialize line resize when browser is first opened
     //adjust height of line according to size of grid in browser
     function resizeLine () {
         //get essential parameters for calculation of line height and winning swing angle range
@@ -44,7 +44,7 @@ window.onload = () => {
         if(event.keyCode == 65) {
             playerOnePressed = true;
             activateP1Swing()
-        } else if (event.keyCode == 39) {
+        } else if (event.keyCode == 76) {
             playerTwoPressed = true;
             activateP2Swing()
         }
@@ -69,7 +69,7 @@ window.onload = () => {
             playerOnePressed = false;
             p1SwingBack();
             
-        } else if (event.keyCode == 39) {
+        } else if (event.keyCode == 76) {
             playerTwoPressed = false;
             p2SwingBack();
         }
@@ -98,7 +98,7 @@ window.onload = () => {
 
             if (deg0 < angleUpperLimit && deg0 > angleLowerLimit) {
                 console.log('hit');
-                setTimeout(moveP1right, 1000);
+                setTimeout(moveP1right, 1500);
             } else {
                 console.log('missed');
             }
@@ -146,7 +146,7 @@ window.onload = () => {
             if (deg0 < angleUpperLimit && deg0 > angleLowerLimit) {
                 console.log('hit');
                 // moveP2left();
-                setTimeout(moveP2left, 1000);
+                setTimeout(moveP2left, 1500);
             } else {
                 console.log('missed');
             }
@@ -221,13 +221,11 @@ window.onload = () => {
     // modal appears when either player wins
     function winnerAlert (player) {
         let modal = document.getElementById('myModal');
-        let modalContent = document.querySelector(".modal-content");
         let span = document.querySelector('.close');
-        let restart = document.querySelector('#reset');
+        let reset = document.querySelector('#reset');
+        let announceWinner = document.querySelector('.winner');
 
-        let announceWinner = document.createElement('p');
         announceWinner.innerHTML = `Player ${player} is the superior Hooker!`
-        modalContent.appendChild(announceWinner);
 
         modal.style.display = "block";
 
@@ -241,7 +239,7 @@ window.onload = () => {
             }
         }
 
-        restart.addEventListener('click', () => {
+        reset.addEventListener('click', () => {
             location.reload();
         })
     }
@@ -250,7 +248,6 @@ window.onload = () => {
     //change counters and sprite
     //add border for toy
     //add background image
-
 
     //add "intro" pop up window with instructions and welcome message > start game
 
