@@ -5,7 +5,7 @@ One fine day, while searching for a game to reproduce for my first project, I st
 
 I've tweaked the layout of the game, but the goal remains the same - Get the hook to the counter closest to your opponent!
 
-Instructions:
+### Instructions:
 1. **Player 1** on the left will "pull" the rope by pressing down key **A**, while **Player 2** on the right will "pull" the rope by pressing down key **L**.
 2. Release the key and let it swing towards the middle
 3. If the circle at the end of the rope touches the circle in the middle, then the hook will move one counter towards your opponent (and away from you)
