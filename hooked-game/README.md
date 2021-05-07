@@ -11,7 +11,7 @@ Instructions:
 3. If the circle at the end of the rope touches the circle in the middle, then the hook will move one counter towards your opponent (and away from you)
 4. Keep going until your counter lands on the counter closest to your opponent! 
 
-[tutorial](imanonion.github.io/hooked-game/img/capture.png)
+![tutorial](hooked-game/img/capture.png)
 
 May the best Hooker win!!
 
