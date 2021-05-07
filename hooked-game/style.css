@@ -40,7 +40,7 @@ body {
 }
 
 .counter {
-    background: white;
+    background:cornsilk;
     border: 0.1875em solid #0F1C3F;
     border-radius: 50%;
     box-shadow: 0.375em 0.375em 0 0 rgba(15, 28, 63, 0.125);
@@ -51,10 +51,13 @@ body {
 }
 
 .sprite {
-    height: 24px;
-    width: 24px;
-    background-color:crimson;
+    height: 36px;
+    width: 36px;
+    /* background-color:crimson; */
+    background-image: url(./img/hook.svg);
     margin: auto;
+    transform-origin: 50% 0;
+    animation: swinging5 1s ease-in-out forwards infinite;
 }
 
 /* create toy */
@@ -75,7 +78,7 @@ body {
     grid-column-end: 18;
     grid-row-start: 1;
     grid-row-end: 2;
-    background-color:chocolate;
+    background-color:maroon;
 }
 
 .box2 {
@@ -83,7 +86,7 @@ body {
     grid-column-end: 10;
     grid-row-start: 2;
     grid-row-end: 9;
-    background-color: chocolate;
+    background-color: maroon;
 }
 
 .box3 {
@@ -91,7 +94,7 @@ body {
     grid-column-end: 13;
     grid-row-start: 9;
     grid-row-end: 10;
-    background-color: chocolate;
+    background-color: maroon;
 }
 
 /* to get height of rope */
@@ -230,6 +233,11 @@ body {
     0% {transform: rotate(var(--deg0));}
     50% {transform: rotate(var(--deg50));}
     100% {transform: rotate(0deg);}
+}
+
+@keyframes swinging5 {
+    0%, 100% {transform: rotate(10deg);}
+    50% {transform: rotate(-5deg);}
 }
 
 #p1Swing {

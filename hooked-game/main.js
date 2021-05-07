@@ -1,6 +1,10 @@
 "use strict";
 // console.log('connected!');
 
+function instructions () {
+    alert(`Player 1: A, Player 2: L`);
+}
+
 window.onload = () => {
     
     //initialize line resize when browser is first opened
@@ -244,13 +248,8 @@ window.onload = () => {
         })
     }
 
-
-    //change counters and sprite
-    //add border for toy
-    //add background image
-
+    //future enhancements:
     //add "intro" pop up window with instructions and welcome message > start game
-
     //add 3..2..1 countdown page
 
 }
