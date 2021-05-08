@@ -5,6 +5,10 @@ One fine day, while searching for a game to reproduce for my first project, I st
 
 I've tweaked the layout of the game, but the goal remains the same - Get the hook to the counter closest to your opponent!
 
+### Link to Hooked! the game:
+Try it here: [Hooked!](https://imanonion.github.io/hooked-game/)
+
+
 ### Instructions:
 1. **Player 1** on the left will "pull" the rope by pressing down key **A**, while **Player 2** on the right will "pull" the rope by pressing down key **L**.
 2. Release the key and let it swing towards the middle
